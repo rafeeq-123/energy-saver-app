@@ -7,16 +7,20 @@ class SaversController < ApplicationController
 	end
 
 	def new
-		@saver = Save.new
+		@saver = Saver.new
 	end
 
 	def create
 		saver = current_user.savers.new(savers_params)
 		if saver.save
-			redirect_to save.id 
+			redirect_to saver_url(saver.id)
 		else
 			render 'new'
 		end	
+	end
+
+	def show
+		@saver = Saver.find(params[:id])
 	end
 
 	private
