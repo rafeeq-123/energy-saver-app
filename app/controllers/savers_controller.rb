@@ -12,12 +12,16 @@ class SaversController < ApplicationController
 
 	def create
 		saver = current_user.savers.new(savers_params)
+		respond_to do |format|
 		if saver.save
-			redirect_to saver_url(saver.id)
+			format.html { redirect_to saver_url(saver.id), notice: 'Your information has been posted.' }
+      format.json { render json: saver, status: :created, location: saver}
 		else
-			render 'new'
-		end	
-	end
+		  format.html { render action: "new" }
+      format.json { render json: saver.errors, status: :unprocessable_entity }
+    end
+	end	
+end
 
 	def show
 		@saver = Saver.find(params[:id])
