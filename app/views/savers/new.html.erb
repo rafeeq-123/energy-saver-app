@@ -1,5 +1,5 @@
 <h1>Add your gas and electric usage here</h1>
-<%= form_for @saver do |f|%>
+<%= form_for @saver, html: {multipart: true} do |f|%>
 <%= f.label :kwh,"Kwh Usage"%><br>
 <%= f.number_field :kwh%><br>
 <%= f.label :gas,"Gas Usage"%><br>
