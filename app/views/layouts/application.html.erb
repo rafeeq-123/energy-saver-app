@@ -1,8 +1,7 @@
 <!DOCTYPE html>
+
 <html>
   <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>EnergySaverApp</title>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag '/saving_energy_pic.jpeg' %>
@@ -18,7 +17,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+
+                 <%= link_to root_path do %>
+                 <%= image_tag "/saving_energy_pic.jpeg", :size => '100x150', :class => "navbar-brand page-scroll" %>
+              <%end%>
             </div>
 
           
@@ -39,14 +41,14 @@
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
     </nav>
+  
     <div class="footer navbar-fixed-bottom">
-  <div class="container text-center">
-  &copy Developed by Rafeeq Wilson
-  </div>
+       <div class="container text-center">
+       &copy Developed by Rafeeq Wilson
+       </div>
+    </div>
     
     <%= yield %>
   </body>
