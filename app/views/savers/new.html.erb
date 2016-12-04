@@ -1,8 +1,14 @@
 <h1>Add your gas and electric usage here</h1>
-<%= form_for @saver, html: {multipart: true} do |f|%>
+<%= form_for @saver do |f|%>
 <%= f.label :kwh,"Kwh Usage"%><br>
-<%= f.number_field :kwh%><br>
+<%= f.number_field :kwh, placeholder:"Kwh per month"%><br>
 <%= f.label :gas,"Gas Usage"%><br>
-<%= f.number_field :gas%><br>
-<%=f.submit "Submit Usage"%><br>
+<%= f.number_field :gas, placeholder:"Gas per month"%><br
+<%= f.label :address, "address"%><br>
+<%= f.text_field :address, placeholder:"address"%><br>
+<%=f.submit "Submit Usage", class:"btn btn-primary"%><br>
 <%end%>
+
+
+
+    
