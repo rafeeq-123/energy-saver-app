@@ -10,5 +10,3 @@ var Welcome = React.createClass({
       )
     }
 });
-
-
