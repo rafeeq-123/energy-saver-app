@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Installation
 
-Things you may want to cover:
+Clone the repo down to your local machine. 
 
-* Ruby version
+Use `bundle install` to install dependencies. 
 
-* System dependencies
+Use `rake db:create` and `rake db:migrate` to set up the database. There is also a seed file with sample data you can run with `rake db:seed`.
 
-* Configuration
 
-* Database creation
+#### Run the app
 
-* Database initialization
+You can run the app with the following command: `rails s`. You can then go to your browser and view the application.
 
-* How to run the test suite
+#### How to Contribute
 
-* Services (job queues, cache servers, search engines, etc.)
+Contributions are welcome, especially by beginners. To contribute to this project please fork the [repository](https://github.com/rafeeq-123/energy-saver-app), make changes, and submit a pull request. 
+#### License File
 
-* Deployment instructions
-
-* ...
+This project uses the MIT License. For more information, please see LICENSE.txt.
