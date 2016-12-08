@@ -1,6 +1,8 @@
 class SaversController < ApplicationController
 	def welcome
 	end
+	def about
+	end
 
 	def index
 		@savers = Saver.all
@@ -11,8 +13,9 @@ class SaversController < ApplicationController
 	end
 
 	def create
+		binding.pry
 		saver = current_user.savers.new(savers_params)
-		if saver.save
+		if saver.save!
 			redirect_to saver_url(saver.id)
 		else
 		  render "new" 
@@ -22,7 +25,6 @@ class SaversController < ApplicationController
 	def show
 		weather_api
 		@saver = Saver.find(params[:id])
-		# render json: @saver
   end
 
 	private
