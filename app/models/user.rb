@@ -8,17 +8,18 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     binding.pry
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      where(provider: auth.provider, uid: auth.uid, oauth_token: auth.credentials.token).first_or_create do |user|
         user.provider = auth.provider
         user.uid = auth.uid
-        user.oauth_token = auth.credentials.token
-        user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+        # user.email = auth.info.email
+        # user.oauth_token = auth.oauth_token
+        @facebook = Koala::Facebook::API.new(auth.credentials.token)
         user.password = Devise.friendly_token[0,20]
     end
   end  
 
-  def self.facebook(auth)
-    @facebook ||= Koala::Facebook::API.new(oauth_access_token)
-  end  
+  # def facebook
+  #   @facebook ||= Koala::Facebook::API.new(oauth_token)
+  # end  
 end
 
