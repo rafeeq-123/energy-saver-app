@@ -24,7 +24,7 @@ module SaversHelper
 		elsif @temp_max = json_info["main"]["temp_max"] > 80
 			render partial: "hot_weather"
 		else
-			"Weather looks alright, but try not to use your appliences"	
+			"Weather looks alright, but try not to use your appliances"	
 		end			
 	end
 
