@@ -13,9 +13,8 @@ class SaversController < ApplicationController
 	end
 
 	def create
-		binding.pry
 		saver = current_user.savers.new(savers_params)
-		if saver.save!
+		if saver.save
 			redirect_to saver_url(saver.id)
 		else
 		  render "new" 

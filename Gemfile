@@ -18,6 +18,9 @@ gem 'react-rails'
 gem 'geocoder'
 gem 'd3_rails'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem 'omniauth'
+gem 'omniauth-facebook', '~> 3.0'
+gem 'koala', '~> 2.4'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

@@ -1,3 +1,13 @@
-
-<%= render "savers/graph.js"%>
-<%=JSON.load(open("http://api.openweathermap.org/data/2.5/weather?lat=#{@saver.latitude}&lon=#{@saver.longitude}&appid=#{@api_key}&units=metric"))%>
+<%weather_json%>
+<div class="container text-center d-block bg-primary">
+  <h4><%=national_average%></h4>
+  <h1>City: <%=@city_name%></h1>
+  <h1>Current Tempature: <%=@temp%>°F</h1> 
+  <h1>Max Tempature: <%=@temp_max%>°F</h1>
+  <h1>Min Tempature: <%=@temp_min%>°F</h1>
+  <h1> Weather: <%=@decription%></h1>
+  <h4>Weather Advice: <%=seasonal_help%></h4>
+</div>
+<div class="graph">
+	<%= render "savers/graph.js"%>
+</div>

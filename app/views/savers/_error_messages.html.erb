@@ -1,0 +1,6 @@
+<% if @saver.errors.full_messages.any? %>
+  <% @saver.errors.full_messages.each do |error_message| %>
+    <%= error_message if @saver.errors.full_messages.first == error_message %> <br />
+  <% end %>
+<% end %>
+<!-- need to put this into a react partcial -->

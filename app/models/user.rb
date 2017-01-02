@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        binding.pry
         user.provider = auth.provider
         user.uid = auth.uid
         if user.email.empty?
@@ -17,12 +18,12 @@ class User < ApplicationRecord
         user.oauth_token = auth.credentials.token
         user.password = Devise.friendly_token[0,20]
     end
-    @facebook = Koala::Facebook::API.new(auth.credentials.token)
+    # @facebook = Koala::Facebook::API.new(auth.credentials.token)
     end
   end  
 
-  # def facebook
-  #   @facebook ||= Koala::Facebook::API.new(oauth_token)
-  # end  
+  def self.facebook
+    @facebook ||= Koala::Facebook::API.new(@user.oauth_token)
+  end  
 end
 
