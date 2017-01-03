@@ -7,7 +7,50 @@
   <h1>Min Tempature: <%=@temp_min%>°F</h1>
   <h1> Weather: <%=@decription%></h1>
   <h4>Weather Advice: <%=seasonal_help%></h4>
+	<p id="graph"></p>
+
 </div>
-<div class="graph">
-	<%= render "savers/graph.js"%>
-</div>
+
+<script>
+  var data =[<%=@saver.gas%>, <%=@saver.kwh%>];
+  var r = 300;
+  var color = d3.scale.ordinal()
+    .range(["red", "blue"]);
+
+  var canvas = d3.select("#graph").append("svg")
+    .attr("width", 2000)
+    .attr("height", 2000);
+
+  var group = canvas.append("g")
+    .attr("transform", "translate(300,300)");
+
+  var arc = d3.svg.arc()
+    .innerRadius(0)
+    .outerRadius(r);
+
+  var pie = d3.layout.pie()
+    .value(function (d) {return d;});  
+
+  var arcs = group.selectAll(".arc")
+    .data(pie(data))
+    .enter()
+    .append("g")
+    .attr("class", "arc");
+  
+  arcs.append("path")
+    .attr("d", arc)
+    .attr("fill", function (d) { return color(d.data);})
+    .transition()
+    .duration(6000)
+    .attrTween("d", pieTween);   
+
+  arcs.append("text") 
+    .attr("transform", function (d) {return "translate(" + arc.centroid(d) + ")"})
+    .text(function(d) {return (d.data );});    
+
+  function pieTween(b){
+    b.innerRadius = 0;
+    var i = d3.interpolate({startAngle:0, endAngle:0}, b);
+    return function(t) { return arc(i(t));};
+}
+</script>

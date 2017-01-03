@@ -3,17 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body { 
-    padding-top: 65px; 
-
+  padding-top: 65px; 
 }
 
-graph {
-	  text-align: center;
-}
-.snowflakeContainer {
-    position: absolute;
-    left: 0px;
-    top: 0px;
+#graph {
+	padding-top: 65px;
+  margin: auto;
+  width: 54%;  
 }
 
 
